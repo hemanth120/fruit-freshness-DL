@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruit Freshness Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,rgb(255, 255, 255),rgb(255, 255, 255));
+            text-align: center;
+            padding: 40px;
+        }
+        .box {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        img {
+            margin-top: 15px;
+            border-radius: 8px;
+            max-width: 300px;
+        }
+        .result {
+            font-size: 1.4em;
+            margin-top: 20px;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fruit Freshness Detector</h1>
+    <div class="box">
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required><br><br>
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction %}
+            <div class="result">
+                <p><strong>Prediction:</strong> {{ prediction }}</p>
+                <p><strong>Confidence:</strong> {{ '%.2f' % confidence }}%</p>
+                {% if image_filename %}
+                    <img src="{{ url_for('uploaded_file', filename=image_filename) }}" alt="Uploaded Image">
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "fruit_freshness_detection",
+			"path": "."
+		},
+		{
+			"name": "dataset",
+			"path": "../../../Downloads/dataset"
+		}
+	],
+	"settings": {}
+}
